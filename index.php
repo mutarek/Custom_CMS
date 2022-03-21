@@ -1,5 +1,5 @@
 <?php
-require "database/db.php";
+require "database/dbcon.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,6 +14,7 @@ require "database/db.php";
             width: 300px;
             padding: 10px;
             box-shadow:2px 2px 5px 0px grey;
+            margin: 10px;
         }
         .blog img{
             height:200px;
@@ -25,16 +26,15 @@ require "database/db.php";
 <body>
     <?php
     $query = "SELECT * FROM post";
-    $db = new database();
-    $db->fetch_data($query);
-    $result = $db->sql;
+    $db = new newdatabase();
+    $result = $db->fetch_query($query);
     if(mysqli_num_rows($result)){
         while ($row = mysqli_fetch_assoc($result)) {
     ?>
     <article class="blog">
         <h1><?php echo $row['post_title']; ?></h1>
         <img src='uploads/.<?php echo $row['post_image']; ?>'>
-        <!-- echo "<img src='images/".$row['imagename']."' >";  -->
+        <p><?php echo $row['post_content'] ?></p>
     </article>
     <?php }  } ?>
 </body>

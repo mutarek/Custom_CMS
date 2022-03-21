@@ -1,12 +1,10 @@
 <?php
 class database
 {
-        public $que;
         private $servername='localhost';
         private $username='root';
         private $password='';
         private $dbname='blog';
-        private $result=array();
         private $mysqli='';
 
 
@@ -26,7 +24,7 @@ class database
         }
 
         public function fetch_data($query){
-            $this->sql = $result = $this->mysqli->query($query);
+            return $this->mysqli->query($query);
         }
 }
 

@@ -26,7 +26,6 @@ $db = new database();
 $res = $db->insert_data($query);
 
 if($res == true){
-    echo "Success";
     header("Location: http://localhost/cms/index.php");
 }
 else{
